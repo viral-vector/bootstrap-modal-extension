@@ -3,20 +3,6 @@
 ### Bootstrap ~3.0 
 
 ## An extension for bootratp modal js. An easy syntax to add a bit of functionality.
-    1. JS & Data Attribute API
-    2. Js customization of modal
-    3. Callbacks
-    4. Size
-    5. contnet handling
-
-	data-attribute API
-
-	```javascript
-		/**
-		 * the extension must be initialized
-		 */
-		var modalExtension = new ModalExtension('Modal');
-	```
 
 	-- required
 	*data-toggle 	="modalExtension" 			=> register extension listener
@@ -32,7 +18,12 @@
 	*data-confirm-text ="*" 					=> text for confirm button
 	*data-confirm-callback ="js function" 		=> js to run after user confirms modal
 
-
+```javascript
+	/**
+	 * the extension must be initialized
+	 */
+	var modalExtension = new ModalExtension('Modal');
+```
 ```html
 	<button type="button" class="btn btn-primary"
 		data-toggle ="modalExtension"
