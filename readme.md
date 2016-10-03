@@ -1,4 +1,4 @@
-## Title 	: bootstrap-modalwindow-extension
+## Title 	: bootstrap-modal-extension
 ### Author 	: viralvector/viral_vector
 ### Bootstrap ~3.0 
 
@@ -11,10 +11,17 @@
 
 	data-attribute API
 
+	```javascript
+		/**
+		 * the extension must be initialized
+		 */
+		var modalExtension = new ModalExtension('Modal');
+	```
+
 	-- required
-	*data-toggle 	="modalWindow" 				=> register modal listener
+	*data-toggle 	="modalExtension" 			=> register extension listener
 	*data-title 	="*" 						=> title of modal
-	*data-content 	="*" 						=> modal main content (selector, ..., html)
+	*data-content 	="*" 						=> modal main content (ID selector, text, html)
 	*data-expose 	="*,*" 						=> list (selector) to unhide
 	*data-footer 	='bool'						=> show footer (with buttons)
 	*data-large 	='bool'						=> show large modal
@@ -28,7 +35,7 @@
 
 ```html
 	<button type="button" class="btn btn-primary"
-		data-toggle ="modalWindow"
+		data-toggle ="modalExtension"
 		data-title 	= "..."
 		data-footer = "bool"
         data-large 	= "bool"
@@ -38,7 +45,7 @@
 	>Login</button>             
 ```
 ```javascript
-	modalWindow.show({
+	modalExtension.show({
 		title 	: '...',
 		footer 	: true,
         large 	: false,
@@ -47,5 +54,5 @@
 		confirm_callback : function(){...}
 	})
 
-	.hide({delay:1000, callback:'', callback_arguments:''});
+	.hide({ delay : 5000, callback : function(){...} });
 ```

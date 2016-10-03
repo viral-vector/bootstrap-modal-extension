@@ -1,10 +1,10 @@
 /**
- * ModalWindow extension -> Bootstrap ModalWindow
+ * Modal extension -> Bootstrap Modal
  * 
  * ViralVector/viral_vector
  */
 
-function ModalWindowExtension (id)
+function ModalExtension (id)
 {
 	this.props = {
 		id				: id,
@@ -32,21 +32,19 @@ function ModalWindowExtension (id)
 
 	// base event listeners 
 	$(document).on('show.bs.modal', function () {
-		modalWindow.props.isActive = true;
-	})
-	.on('shown.bs.modal', function () {
-	})
-	.on('hide.bs.modal', function () {
-		modalWindow.props.isActive = false;
-	})
-	.on('hidden.bs.modal', function () {
-		modalWindow.reset();
-	});
+		this.props.isActive = true;
+	}.bind(this)).on('shown.bs.modal', function () {
+
+	}.bind(this)).on('hide.bs.modal', function () {
+		this.props.isActive = false;
+	}.bind(this)).on('hidden.bs.modal', function () {
+		this.reset();
+	}.bind(this));
 
 	this.listen = function(obj){
-		$(document).on('click', obj, function(event){
-			modalWindow.show(modalWindow.getConfig(this));
-		});
+		$(document).on('click', obj, function(){
+			this.show(this.getConfig(obj))
+		}.bind(this));
 	};
 
 	this.getConfig = function(obj){
@@ -64,7 +62,7 @@ function ModalWindowExtension (id)
 		};
 	};
 
-	this.listen('[data-toggle=modalWindow]');	
+	this.listen('[data-toggle=modalExtension]');	
 
 	return this;
 }
@@ -72,7 +70,7 @@ function ModalWindowExtension (id)
 /**
  * 
  */
-ModalWindowExtension.execute = function(func)
+ModalExtension.prototype.execute = function(func)
 {
 	if(typeof func !== 'function' && typeof func !== 'object'){
 		var method = new Function("return (" + func + ")")();
@@ -86,7 +84,7 @@ ModalWindowExtension.execute = function(func)
 /**
  * 
  */
-ModalWindowExtension.prototype.reset = function(args)
+ModalExtension.prototype.reset = function(args)
 {
 	if(!this.props.modal){
 		this.init();
@@ -119,17 +117,17 @@ ModalWindowExtension.prototype.reset = function(args)
 /**
  * 
  */
-ModalWindowExtension.prototype.show = function(args)
+ModalExtension.prototype.show = function(args)
 {
 	this.replace(args);
 
 	// confirm_callback
 	if(args.confirm_callback){
-		this.props.modal.find('[data-confirm]').off().on('click',function(){
-
-			ModalWindow.execute(args.confirm_callback);
-
-		}).text(args.confirm_text).show();
+		this.props.modal.find('[data-confirm]').off().on('click', function(){
+			this.execute(args.confirm_callback);
+		}.bind(this))
+		 .text(args.confirm_text)
+		 .show();
 	}else{
 		this.props.modal.find('[data-confirm]').hide();
 	}
@@ -147,7 +145,7 @@ ModalWindowExtension.prototype.show = function(args)
 /**
  * 
  */
-ModalWindowExtension.prototype.replace = function(args)
+ModalExtension.prototype.replace = function(args)
 {
 	this.reset(args);
 
@@ -192,13 +190,13 @@ ModalWindowExtension.prototype.replace = function(args)
 /**
  * 
  */
-ModalWindowExtension.prototype.hide = function(args)
+ModalExtension.prototype.hide = function(args)
 {
 	this.props.lastTimer = setTimeout(function(){
-		if(modalWindow.props.isActive === true){
-			$(modalWindow.props.modal).modal('hide');
+		if(this.props.isActive === true){
+			$(this.props.modal).modal('hide');
 		}
-	},args.delay? args.delay : 0);
+	}.bind(this),args.delay? args.delay : 0);
 
 	return this;
 };
@@ -206,7 +204,7 @@ ModalWindowExtension.prototype.hide = function(args)
 /**
  * 
  */
-ModalWindowExtension.prototype.open = function(args){
+ModalExtension.prototype.open = function(args){
 	var config = {
 		show : true,
 		backdrop : args.backdrop? args.backdrop : this.props.backdrop,
