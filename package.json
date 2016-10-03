@@ -1,0 +1,20 @@
+{
+    "name": "bootstrap-modalwindow-extension",
+    "version": "1.0.0",
+    "description": "An extension for bootratp modal js. An easy syntax to add a bit of functionality.",
+    "author": "viralvector/viral_vector <vetorviral@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/viral_vector/bootstrap-modalwindow"
+    },
+    "keywords": [
+        "bootstrap",
+        "modalwindow",
+        "viral_vector"
+    ],
+    "dependencies": {
+        "jquery": "*",
+        "bootstrap": "~3.0.0"
+    }
+}
