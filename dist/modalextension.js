@@ -1,10 +1,4 @@
-/**
- * Modal extension -> Bootstrap Modal
- * 
- * ViralVector/viral_vector
- */
-
-function ModalExtension (id)
+export default function ModalExtension (id)
 {
 	this.props = {
 		id				: id,
@@ -14,9 +8,6 @@ function ModalExtension (id)
 		isActive   		: false,	
 		noContentText	: 'No content provided.',
 
-		/**
-		 * instance configs
-		 */
 		title			: '',
 		footer			: true,
 		confirm_text	: '...',
@@ -30,21 +21,20 @@ function ModalExtension (id)
 		
 	this.props.modal = $('#' + this.props.id);
 
-	// base event listeners 
-	$(document).on('show.bs.modal', function () {
+	$(document)
+	  .on('show.bs.modal',   () => {
 		this.props.isActive = true;
-	}.bind(this)).on('shown.bs.modal', function () {
-
-	}.bind(this)).on('hide.bs.modal', function () {
+	}).on('shown.bs.modal',  () => {
+	}).on('hide.bs.modal',   () => {
 		this.props.isActive = false;
-	}.bind(this)).on('hidden.bs.modal', function () {
+	}).on('hidden.bs.modal', () => {
 		this.reset();
-	}.bind(this));
+	});
 
-	this.listen = function(obj){
-		$(document).on('click', obj, function(){
+	this.listen = (obj) => {
+		$(document).on('click', obj, () => {
 			this.show(this.getConfig(obj))
-		}.bind(this));
+		});
 	};
 
 	this.getConfig = function(obj){
@@ -67,13 +57,10 @@ function ModalExtension (id)
 	return this;
 }
 
-/**
- * 
- */
 ModalExtension.prototype.execute = function(func)
 {
 	if(typeof func !== 'function' && typeof func !== 'object'){
-		var method = new Function("return (" + func + ")")();
+		let method = new Function("return (" + func + ")")();
 
 		method.call();		
 	}else{
@@ -81,9 +68,6 @@ ModalExtension.prototype.execute = function(func)
 	}
 };
 
-/**
- * 
- */
 ModalExtension.prototype.reset = function(args)
 {
 	if(!this.props.modal){
@@ -93,12 +77,12 @@ ModalExtension.prototype.reset = function(args)
 	// reset current content in modal
 	if(this.props.lastParent && this.props.migrate === true){
 		if(args && args.expose && args.expose.trim() !== ''){
-			var selectors = args.expose.trim();
+			let selectors = args.expose.trim();
 
 			this.props.modal.find(selectors).toggleClass('hidden');
 
 		}else if(this.props.expose){
-			var selectors = this.props.expose;
+			let selectors = this.props.expose;
 
 			this.props.modal.find(selectors).toggleClass('hidden');
 		}
@@ -114,20 +98,17 @@ ModalExtension.prototype.reset = function(args)
 	return this;
 };
 
-/**
- * 
- */
 ModalExtension.prototype.show = function(args)
 {
 	this.replace(args);
 
 	// confirm_callback
 	if(args.confirm_callback){
-		this.props.modal.find('[data-confirm]').off().on('click', function(){
+		this.props.modal.find('[data-confirm]').off().on('click', () => {
 			this.execute(args.confirm_callback);
-		}.bind(this))
-		 .text(args.confirm_text)
-		 .show();
+		})
+		.text(args.confirm_text)
+		.show();
 	}else{
 		this.props.modal.find('[data-confirm]').hide();
 	}
@@ -142,9 +123,6 @@ ModalExtension.prototype.show = function(args)
 	return this.open(args);
 };
 
-/**
- * 
- */
 ModalExtension.prototype.replace = function(args)
 {
 	this.reset(args);
@@ -179,7 +157,7 @@ ModalExtension.prototype.replace = function(args)
 	}
 
 	if(args.expose && args.expose.trim() !== ''){
-		var selectors = this.props.expose = args.expose.trim();
+		let selectors = this.props.expose = args.expose.trim();
 
 		this.props.modal.find(selectors).toggleClass('hidden');
 	}
@@ -187,25 +165,19 @@ ModalExtension.prototype.replace = function(args)
 	return this;
 };
 
-/**
- * 
- */
 ModalExtension.prototype.hide = function(args)
 {
-	this.props.lastTimer = setTimeout(function(){
+	this.props.lastTimer = setTimeout(() => {
 		if(this.props.isActive === true){
 			$(this.props.modal).modal('hide');
 		}
-	}.bind(this),args.delay? args.delay : 0);
+	},args.delay? args.delay : 0);
 
 	return this;
 };
 
-/**
- * 
- */
 ModalExtension.prototype.open = function(args){
-	var config = {
+	let config = {
 		show : true,
 		backdrop : args.backdrop? args.backdrop : this.props.backdrop,
 		keyboard : args.keyboard? args.keyboard : this.props.keyboard,

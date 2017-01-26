@@ -1,9 +1,8 @@
 {
     "name": "bootstrap-modal-extension",
     "version": "1.0.0",
-    "description": "An extension for bootratp modal js. An easy syntax to add a bit of functionality.",
-    "author": "viralvector/viral-vector <vectorviral@gmail.com>",
-    "license": "MIT",
+    "description": "Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for finer control of the modal.",
+        "main": "dist/modalextension.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/viral-vector/bootstrap-modal-extension.git"
@@ -12,6 +11,15 @@
         "bootstrap",
         "modal"
     ],
+    "author": {
+        "name": "viral_vector",
+        "email": "vectorviral@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/viral-vector/bootstrap-modal-extension/issues"
+    },
+    "homepage": "https://github.com/viral-vector/bootstrap-modal-extension",
     "dependencies": {
         "jquery": "*",
         "bootstrap": "~3.0.0"
