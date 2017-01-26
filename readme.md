@@ -2,14 +2,11 @@
  
 Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for finer control of the modal.
 
-```javascript
-	/**
-	 * the extension must be initialized
-	 */
-	var modalExtension = new ModalExtension('Modal');
+## Installation
+```bash
+ npm install bootstrap-modal-extension
 ```
-
-Data Attribute api
+## Use
 
 	*data-toggle 	="modalExtension" 			=> register extension listener
 	*data-title 	="*" 						=> title of modal
@@ -23,6 +20,13 @@ Data Attribute api
 	*data-confirm-text ="*" 					=> text for confirm button
 	*data-confirm-callback ="js function" 		=> js to run after user confirms modal
 
+```js
+	// modal extension must be created
+	var modalExtension = new ModalExtension('id of modal');
+	
+	// utilize js or data-attributes
+```
+
 ```html
 	<button type="button" class="btn btn-primary"
 		data-toggle ="modalExtension"
@@ -34,7 +38,7 @@ Data Attribute api
 		data-confirm-callback = " function(){...} "
 	>Login</button>             
 ```
-```javascript
+```js
 	modalExtension.show({
 		title 	: '...',
 		footer 	: true,
