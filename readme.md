@@ -7,6 +7,7 @@ Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for
  npm install bootstrap-modal-extension
 ```
 ### Use
+```js
 *data-toggle ='' 			=> register extension listener
 *data-title ='*' 			=> title of modal
 *data-content ='*' 			=> modal main content (ID selector, text, html)
@@ -18,6 +19,7 @@ Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for
 *data-backdrop ='static'	=> set modal backdrop
 *data-confirm-text ='*' 	=> text for confirm button
 *data-confirm-callback =''	=> callback after user confirms
+```
 
 ```js
 // modal extension must be created
