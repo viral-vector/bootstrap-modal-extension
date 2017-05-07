@@ -13,7 +13,7 @@ Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for
 *data-content ='*' => modal main content (ID selector, text, html)
 *data-expose ='*,*' => list of selectors to unhide
 *data-footer ='bool' => show footer
-*data-large ='bool'	=> show large modal
+*data-large ='bool' => show large modal
 *data-migrate ='bool' => migrate content location
 *data-keyboard ='bool' => allow keyboard
 *data-backdrop ='static' => set modal backdrop
