@@ -8,17 +8,17 @@ Extension for Bootstrap ~3.0 modal. A wrapper for the default js that allows for
 ```
 ### Use
 ```js
-*data-toggle ='' 			=> register extension listener
-*data-title ='*' 			=> title of modal
-*data-content ='*' 			=> modal main content (ID selector, text, html)
-*data-expose ='*,*' 		=> list of selectors to unhide
-*data-footer ='bool'		=> show footer
-*data-large ='bool'			=> show large modal
-*data-migrate ='bool'		=> migrate content location
-*data-keyboard ='bool'		=> allow keyboard
-*data-backdrop ='static'	=> set modal backdrop
-*data-confirm-text ='*' 	=> text for confirm button
-*data-confirm-callback =''	=> callback after user confirms
+*data-toggle ='' => register extension listener
+*data-title ='*' => title of modal
+*data-content ='*' => modal main content (ID selector, text, html)
+*data-expose ='*,*' => list of selectors to unhide
+*data-footer ='bool' => show footer
+*data-large ='bool'	=> show large modal
+*data-migrate ='bool' => migrate content location
+*data-keyboard ='bool' => allow keyboard
+*data-backdrop ='static' => set modal backdrop
+*data-confirm-text ='*' => text for confirm button
+*data-confirm-callback ='' => callback after user confirms
 ```
 
 ```js
